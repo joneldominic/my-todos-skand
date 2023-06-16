@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { gql, useMutation } from '@apollo/client';
+import { Typography } from '@mui/material';
 
 function Root() {
   // to log in, get a json web token
@@ -15,7 +16,7 @@ function Root() {
   }, [getToken]);
 
   // simply show the token for now
-  return <h1>{data?.token}</h1>;
+  return <Typography>{data?.token}</Typography>;
 }
 
 export default Root;
