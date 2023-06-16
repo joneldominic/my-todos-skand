@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as jose from 'jose';
 
 const secret = new TextEncoder().encode('very very very very very long and safe secret phrase');
