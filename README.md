@@ -1,9 +1,9 @@
 # my-todos-skand
+
 Entry Task for Skand.io Frontend
 
 Requirements: https://skandio.notion.site/Entry-Task-for-Frontend-My-todos-03152f1121364128a4f698ba7e3b1717
 Project Board: https://github.com/users/joneldominic/projects/2/views/1
-
 
 # Frontend Task Starter
 
@@ -12,7 +12,7 @@ It contains a Mirage server as a mocking backend for you to complete the task.
 The server acts as an in-memory database and a GraphQL server.
 
 The server is placed under `src/libraries/server/`.
-Inside `src/main.tsx` and `src/Root.tsx` is a simple example about how to use the server in your project.
+Inside `src/main.jsx` and `src/Root.tsx` is a simple example about how to use the server in your project.
 `import './libraries/server';` will do the magic.
 
 To spin it up, run `pnpm install` & `pnpm dev` (npm should work as well),
