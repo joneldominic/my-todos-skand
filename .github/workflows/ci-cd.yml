@@ -1,0 +1,43 @@
+name: ci/cd with pulumi
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+  workflow_dispatch: # to manually run this workflow
+
+  env:
+
+  jobs:
+    code-analysis-and-testing:
+      name: Code analysis and testing
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+
+        - name: Setup Node
+          uses: actions/setup-node@v3
+          with:
+            node-version: 16.x
+
+        - name: Install dependencies
+          run: pnpm install
+
+        - name: Run lint
+          run: pnpm run lint
+
+        - name: Run test
+          run: pnpm run test
+
+    build-and-deploy:
+      name: Build and deploy
+      needs: code-analysis-and-testing
+      if: ${{ github.event_name == 'push' }}
+      steps:
+        - run: echo "TODO - Build and deploy app"
