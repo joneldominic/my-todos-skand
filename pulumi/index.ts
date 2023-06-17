@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 import * as pulumi from '@pulumi/pulumi';
@@ -5,8 +6,34 @@ import * as aws from '@pulumi/aws';
 import * as awsx from '@pulumi/awsx';
 
 // Create an AWS resource (S3 Bucket)
-const bucket = new aws.s3.Bucket('my-bucket');
+const bucket = new aws.s3.Bucket('my-todos-skand-bucket', {
+  website: {
+    indexDocument: 'index.html'
+  }
+});
 
-// Export the name of the bucket
-// eslint-disable-next-line import/prefer-default-export
+const ownershipControls = new aws.s3.BucketOwnershipControls('ownership-controls', {
+  bucket: bucket.id,
+  rule: {
+    objectOwnership: 'ObjectWriter'
+  }
+});
+
+const publicAccessBlock = new aws.s3.BucketPublicAccessBlock('public-access-block', {
+  bucket: bucket.id,
+  blockPublicAcls: false
+});
+
+const bucketObject = new aws.s3.BucketObject(
+  'index.html',
+  {
+    bucket: bucket.id,
+    source: new pulumi.asset.FileAsset('./index.html'),
+    contentType: 'text/html',
+    acl: 'public-read'
+  },
+  { dependsOn: publicAccessBlock }
+);
+
 export const bucketName = bucket.id;
+export const bucketEndpoint = pulumi.interpolate`http://${bucket.websiteEndpoint}`;
