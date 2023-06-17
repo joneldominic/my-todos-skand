@@ -12,6 +12,7 @@ module.exports = {
   plugins: ['react-refresh', 'jest'],
   rules: {
     'react-refresh/only-export-components': 'warn',
-    'comma-dangle': ['error', { functions: 'ignore' }]
+    'comma-dangle': ['error', { functions: 'ignore' }],
+    'react/jsx-filename-extension': [0]
   }
 };
