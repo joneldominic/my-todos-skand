@@ -22,6 +22,7 @@ function Root() {
       <Button variant="contained" className="bg-black text-3xl">
         Contained
       </Button>
+      <h2>For ci test</h2>
     </>
   );
 }
