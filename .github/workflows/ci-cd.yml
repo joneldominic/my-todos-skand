@@ -11,8 +11,6 @@ on:
 
   workflow_dispatch: # to manually run this workflow
 
-env:
-
 jobs:
   code-analysis-and-testing:
     name: Code analysis and testing
