@@ -20,3 +20,12 @@ then access `http://127.0.0.1:5173/` in your browser.
 
 To complete the task, you are free to do anything to the code -
 including but not limited to copy it, modify it, extend it, or ditch it and write your own mocking server from the ground.
+
+# Dev Resources
+
+## Running locally build app
+
+1. install [http-server](https://github.com/http-party/http-server) globally
+2. Build app by running `npm run build`
+3. Go to `dist` folder
+4. Run `http-server .`
