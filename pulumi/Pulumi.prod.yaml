@@ -1,0 +1,4 @@
+encryptionsalt: v1:F4jC5GbY5Ew=:v1:wtVyxJLfyhHrvP8w:omS3KnFcpc2GYDKAosJ1Fq3e4aRmtg==
+config:
+  aws:region: us-east-1
+  my-todos-skand:targetDomain: app.my-todos-skand.com
