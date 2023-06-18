@@ -1,0 +1,14 @@
+{
+  "name": "my-todos-skand",
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/mime": "^3.0.1",
+    "@types/node": "^16"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^5.0.0",
+    "@pulumi/awsx": "^1.0.0",
+    "@pulumi/pulumi": "^3.0.0",
+    "mime": "^3.0.0"
+  }
+}

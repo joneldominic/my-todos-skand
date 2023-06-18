@@ -29,3 +29,10 @@ including but not limited to copy it, modify it, extend it, or ditch it and writ
 2. Build app by running `npm run build`
 3. Go to `dist` folder
 4. Run `http-server .`
+
+## Pulumi guides
+
+### Login
+
+1. Add `.pulumi-token` under `./pulumi` dir
+2. Run `pulumi login --local`
