@@ -36,7 +36,7 @@ jobs:
         run: pnpm run test
 
   build-and-deploy:
-    # if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' }}
     name: Build and deploy
     runs-on: ubuntu-latest
     needs: code-analysis-and-testing
@@ -75,8 +75,9 @@ jobs:
           cd pulumi
           npm install
 
-      - name: Deploy app with Pulumi
-        uses: pulumi/actions@v3
+      - name: Deploy app to TEST with Pulumi
+        if: ${{ github.ref_name == 'dev'}}
+        uses: pulumi/actions@v4
         with:
           command: up
           stack-name: dev
@@ -85,6 +86,13 @@ jobs:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
 
-        # TODO: stack-name for pulumi should be dependent with the branch
-        # dev -> test
-        # main -> prod
+      - name: Deploy app to PROD with Pulumi
+        if: ${{ github.ref_name == 'main'}}
+        uses: pulumi/actions@v4
+        with:
+          command: up
+          stack-name: dev
+          work-dir: ./pulumi
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
