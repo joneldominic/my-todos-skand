@@ -71,7 +71,7 @@ jobs:
       - name: Deploy app with Pulumi
         uses: pulumi/actions@v4
         with:
-          command: up -y
+          command: up
           stack-name: dev
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
