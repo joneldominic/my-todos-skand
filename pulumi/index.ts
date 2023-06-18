@@ -45,14 +45,14 @@ function getAppConfig(app: string) {
 }
 
 function configureBucketAccessControls(bucket: aws.s3.Bucket) {
-  const ownershipControls = new aws.s3.BucketOwnershipControls(`${bucket.id}-ownership-controls`, {
+  const ownershipControls = new aws.s3.BucketOwnershipControls('ownership-controls', {
     bucket: bucket.id,
     rule: {
       objectOwnership: 'ObjectWriter'
     }
   });
 
-  const publicAccessBlock = new aws.s3.BucketPublicAccessBlock(`${bucket.id}-public-access-block`, {
+  const publicAccessBlock = new aws.s3.BucketPublicAccessBlock('public-access-block', {
     bucket: bucket.id,
     blockPublicAcls: false
   });
