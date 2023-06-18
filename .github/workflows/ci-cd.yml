@@ -76,7 +76,7 @@ jobs:
           npm install
 
       - name: Deploy app with Pulumi
-        uses: pulumi/actions@v4
+        uses: pulumi/actions@v3
         with:
           command: up
           stack-name: dev
