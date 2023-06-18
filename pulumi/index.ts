@@ -73,7 +73,7 @@ function main() {
     }
   });
 
-  const buildDirectory = `${process.cwd()}\\..\\dist`;
+  const buildDirectory = `${process.cwd()}/../dist`;
   const { publicAccessBlock } = configureBucketAccessControls(bucket);
 
   uploadToS3(buildDirectory, bucket, publicAccessBlock);
